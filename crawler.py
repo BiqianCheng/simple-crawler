@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import os
 
 wantedPg = 1
+visitedPage = []
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)s:%(message)s',
@@ -21,6 +22,7 @@ class Crawler:
 
     def get_linked_urls(self, url, html):
         soup = BeautifulSoup(html, 'html.parser')
+        #print(soup.get_text())
         for link in soup.find_all('a'):
             path = link.get('href')
             if path and path.startswith('/'):
@@ -32,34 +34,43 @@ class Crawler:
             self.urls_to_visit.append(url)
 
     def crawl(self, url):
-        htmlFile = url.replace('https://','').replace('.','_').replace('/','')+'.txt'
-        #print(htmlFile)
-        
+        htmlFile = url.replace('https://','').replace('.','_').replace('/','_')
+        if htmlFile[-1] == '_':
+            htmlFile = htmlFile[:-1]
+            # print(htmlFile)
+        # Check duplicated pages:
+        if htmlFile in visitedPage:
+            print('Duplicated page found! Skipping this round ... ...')
+            return True
+        visitedPage.append(htmlFile)
+        htmlFile += '.html'        
         html = self.download_url(url)
-        #folder.write(html)
-        #folder.close()
+
         for url in self.get_linked_urls(url, html):
             self.add_url_to_visit(url)
-        #print(html)
+
         htmlOutput = open('html/'+htmlFile,'w',encoding='utf-8')
         htmlOutput.write(html)
         htmlOutput.close()
+        return False
 
     def run(self):
         crawledPg = 0
         while self.urls_to_visit:
+            isDuplicated = False
             url = self.urls_to_visit.pop(0)
             logging.info(f'Crawling: {url}')
             if crawledPg == wantedPg:
                 print('\nCrawling finished!\n')
                 break;
             try:
-                self.crawl(url)
+                isDuplicated = self.crawl(url)
             except Exception:
                 logging.exception(f'Failed to crawl: {url}')
             finally:
-                self.visited_urls.append(url)
-                crawledPg += 1
+                if isDuplicated == False:
+                    self.visited_urls.append(url)
+                    crawledPg += 1
 
 if __name__ == '__main__':
     wantedPg = int(input('Enter number of pages that you want to crawl: '))
