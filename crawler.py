@@ -4,8 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-wantedPg = 1
 visitedPage = []
+
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)s:%(message)s',
@@ -13,9 +13,11 @@ logging.basicConfig(
 
 class Crawler:
 
-    def __init__(self, urls=[]):
+    def __init__(self, urls=[],limitPG=1):
         self.visited_urls = []
         self.urls_to_visit = urls
+        self.crawledPg = 0
+        self.wantedPg = limitPG
 
     def download_url(self, url):
         return requests.get(url).text
@@ -54,13 +56,12 @@ class Crawler:
         htmlOutput.close()
         return False
 
-    def run(self):
-        crawledPg = 0
+    def run(self):       
         while self.urls_to_visit:
             isDuplicated = False
             url = self.urls_to_visit.pop(0)
             logging.info(f'Crawling: {url}')
-            if crawledPg == wantedPg:
+            if self.crawledPg == self.wantedPg:
                 print('\nCrawling finished!\n')
                 break;
             try:
@@ -70,8 +71,7 @@ class Crawler:
             finally:
                 if isDuplicated == False:
                     self.visited_urls.append(url)
-                    crawledPg += 1
+                    self.crawledPg += 1
 
-if __name__ == '__main__':
-    wantedPg = int(input('Enter number of pages that you want to crawl: '))
-    crw = Crawler(urls=['https://www.cs.ucr.edu']).run()
+def crawler(url, pages):
+    crw = Crawler(url,pages).run()
