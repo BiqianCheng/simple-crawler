@@ -1,6 +1,9 @@
 from bs4 import BeautifulSoup
 
 def parse(file):
+    # Empty the file first
+    f = open(file,'r',encoding='utf-8')
+    f.close()
     f = open(file,'r',encoding='utf-8')
     #page = f.read()
     #print(page)
