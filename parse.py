@@ -17,5 +17,6 @@ def parse(file):
             tempTxt.write(string)
     
     tempTxt.close()
+    f.close()
     print('Parsing done, all text in body tag will be stored in body.txt\n')
         
