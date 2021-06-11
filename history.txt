@@ -18,3 +18,13 @@ mailto:contact@cs.ucr.edu
 https://www.cs.ucr.edu/department-intranet
 https://twitter.com/ucr_cse
 https://www.facebook.com/UCRCompSciEng
+https://www.ucr.edu/privacy.html
+https://www.ucr.edu/terms.html
+#a-main
+http://blink.ucsd.edu/
+http://ucsd.edu/about/a-to-z-index/index.html
+https://ucsd.edu/index.html
+https://campaign.ucsd.edu/
+#
+http://ucsd.edu/about/index.html
+about/visiting-tours/index.html

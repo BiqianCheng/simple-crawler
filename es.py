@@ -19,6 +19,19 @@ esConn = Elasticsearch(
 
 
 def uploadDoc(ESList):
+    """Upload docmuent to ElasticSearch
+    
+    Args: doc (object): A doc object that contain url, page_title, text, timestamp and author.
+    ```
+    {
+        "url": "https://www.example.com",
+        "page_title": "University of California San Diego",
+        "text": "<p>Top public university in the nation for contributions to social mobility, research and public service.</p>",
+        "timestamp": datetime.now(),
+        "author": ""
+    }
+    ```
+    """
     try:
         doc = {
             "url": ESList[0],
