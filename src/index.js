@@ -109,6 +109,7 @@ async function searchQuery(query) {
                     "Basic ZWxhc3RpYzpGRTBZcmcycFU1anhmMEVhN1Y3YTVkNWw=",
             },
             body: JSON.stringify({
+                size: 20,
                 query: {
                     match: { text: query },
                 },
