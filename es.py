@@ -41,9 +41,47 @@ def uploadDoc(ESList):
             "author": ""
         }
         res = esConn.index(index="edusite", body=doc)
-        print(res)
-        print('\n')
+        
+        # print(res)
+        # print('\n')
     except ConnectionError as err:
         print("Unexpected error: {}".format(err))
 
-# def bulkLoad(docs):
+# {"settings": {
+#     "analysis": {
+#       "analyzer": {
+#           "defaultAnalyzer":{
+#               "type": "standard"
+#           },
+#         "htmlStripAnalyzer": {
+#           "type": "custom",
+#           "tokenizer": "standard",
+#           "filter": ["lowercase"],
+#           "char_filter": [ "html_strip" ]
+#         }
+#       }
+#     }
+#   },"mappings": {
+#       "properties": {
+#          "urlt": {
+#           "type": "text",
+#           "analyzer": "defaultAnalyzer"
+#         },
+#         "page_title": {
+#           "type": "text",
+#           "analyzer": "defaultAnalyzer"
+#         },
+#         "text": {
+#           "type": "text",
+#           "analyzer": "htmlStripAnalyzer"
+#         },
+#        "timestamp": {
+#           "type": "date"
+#           },
+#         "author": {
+#           "type": "text",
+#           "analyzer": "defaultAnalyzer"
+#         }
+#       }
+#   }
+# }
