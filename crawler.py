@@ -54,7 +54,7 @@ class Crawler:
         html = self.download_url(url)
 
         ESList = parse(url, html)
-        print(url)
+        # print(url)
         es.uploadDoc(ESList)
 
         for url in self.get_linked_urls(url, html):
