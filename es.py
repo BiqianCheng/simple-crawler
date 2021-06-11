@@ -29,6 +29,7 @@ def uploadDoc(ESList):
         }
         res = esConn.index(index="edusite", id=1, body=doc)
         print(res)
+        print('\n')
     except ConnectionError as err:
         print("Unexpected error: {}".format(err))
 

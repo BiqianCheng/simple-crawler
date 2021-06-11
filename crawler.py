@@ -3,6 +3,8 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 import os
+import es
+import parse
 
 visitedPage = []
 
@@ -42,7 +44,7 @@ class Crawler:
             # print(htmlFile)
         # Check duplicated pages:
         if url in visitedPage:
-            print('Duplicated page found! Skipping this round ... ...')
+            print('Duplicated page found! Skipping this round ... ...\n')
             return True
         visitedPage.append(url)
         htmlFile += '.html'        
@@ -54,6 +56,11 @@ class Crawler:
         htmlOutput = open('html/'+htmlFile,'w',encoding='utf-8')
         htmlOutput.write(html)
         htmlOutput.close()
+        self.visited_urls.append(url)
+        # Call parser
+        inFile = 'html/'+htmlFile
+        ESList = parse.parse(inFile)
+        es.uploadDoc(ESList)
         return False
 
     def run(self):       
@@ -70,7 +77,6 @@ class Crawler:
                 logging.exception(f'Failed to crawl: {url}')
             finally:
                 if isDuplicated == False:
-                    self.visited_urls.append(url)
                     self.crawledPg += 1
 
 def crawler(url, pages):
