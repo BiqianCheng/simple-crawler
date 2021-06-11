@@ -60,10 +60,11 @@ def changeSeeds():
             lines = rfile.readlines()
             rfile.close()
             display()
+            #print(lines)
             delSeed = input('Enter the seed that you want to delete: ')
             wfile = open('seeds.txt', 'w')
             for line in lines:
-                if line != delSeed and not line.isspace():
+                if line != (delSeed+'\n') and not line.isspace():
                     wfile.write(line)
             wfile.close()
             print('Seed has been deleted!\n')
