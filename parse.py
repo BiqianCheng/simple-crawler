@@ -36,12 +36,12 @@ def parse(htmlPage):
     # Find title
     titleText = soup.find('title')
     titleText = titleText.string
-    print(titleText,'\n')
+    #print(titleText,'\n')
     # Find text
     visible_texts = filter(tag_visible, texts)
     #print('Parsing done, all text in body tag will be stored in body.txt\n')
     bodyText = u" ".join(t.strip() for t in visible_texts)
-    print(bodyText,'\n')
+    #print(bodyText,'\n')
     # Get url
     URLList = htmlPage.replace('html/','').replace('.html','').replace('_',' ').split()
     URL = ''
@@ -58,4 +58,6 @@ def parse(htmlPage):
             URL = line
         if isThis:
             break
-    #print(URL)     
+    URL = URL.replace('\n','') 
+    ESList = [URL, titleText, bodyText]
+    return ESList

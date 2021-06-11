@@ -1,5 +1,6 @@
 import crawler
 import parse
+import es
 import os
 
 
@@ -16,8 +17,9 @@ def crawling():
 def parsing():
     file = input(
         'Enter the htmlFile that you want to parse(including the path if not in the same directory): ')
-    parse.parse(file)
-
+    EList = parse.parse(file)
+    #print(ESList)
+    return EList
 
 def display():
     try:
@@ -78,7 +80,7 @@ def changeSeeds():
 
 # UI
 print('Welcome to Blablabla\'s crawler\n')
-
+ESList = []
 while True:
     print('Choose one of the options below to proceed:')
     print('1. Call the crawler')
@@ -101,9 +103,14 @@ while True:
         changeSeeds()
     elif choice == 4:
         # Parse html
-        parsing()
-    # elif choice == 5:
-    #     # Import to ElasticSearch
+        ESList = parsing()
+        # print(ESList)
+    elif choice == 5:
+        # Import to ElasticSearch
     #     import()
+        if not ESList:
+            print('Warning: Please run the parsing first before doing ElasticSearch!\n')
+            continue
+        es.uploadDoc(ESList)
     elif choice == 0:
         break

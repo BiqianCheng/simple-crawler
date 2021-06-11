@@ -18,8 +18,15 @@ esConn = Elasticsearch(
 # }
 
 
-def uploadDoc(doc):
+def uploadDoc(ESList):
     try:
+        doc = {
+            "url": ESList[0],
+            "page_title": ESList[1],
+            "text": ESList[2],
+            "timestamp": datetime.now(),
+            "author": ""
+        }
         res = esConn.index(index="edusite", id=1, body=doc)
         print(res)
     except ConnectionError as err:
