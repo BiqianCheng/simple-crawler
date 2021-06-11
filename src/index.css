@@ -24,7 +24,7 @@ h1 {
     grid-gap: 20px;
 }
 
-.character {
+.contentBox{
     list-style-type: none;
     background-color: #eaeaea;
     border-radius: 5px;
@@ -32,23 +32,28 @@ h1 {
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-areas:
-        "name image"
-        "house image";
+        "name"
+        "url"
+        "text";
     text-align: left;
 }
 
-.character > h2 {
+.contentBox> .titleLink {
     grid-area: name;
-    margin-bottom: 0px;
+    margin-bottom: -18px;
 }
 
-.character > p {
-    grid-area: house;
+.contentBox> .urlLink {
+    grid-area: url;
+    /* margin-bottom: 0px; */
+}
+
+.contentBox> .description {
+    grid-area: text;
     margin: 0;
-    margin-top: -18px;
 }
 
-.character > img {
+.contentBox> img {
     max-height: 100px;
     grid-area: image;
 }

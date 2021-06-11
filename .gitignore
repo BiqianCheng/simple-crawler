@@ -1,2 +1,4 @@
-__pycache__/crawler.cpython-38.pyc
-__pycache__/parse.cpython-38.pyc
+__pycache__/
+html/
+history.txt
+seeds.txt

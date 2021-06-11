@@ -24,14 +24,14 @@ const loadCharacters = async () => {
     }
 };
 
-const displayCharacters = (characters) => {
-    const htmlString = characters
-        .map((character) => {
+const displayContents = (contents) => {
+    const htmlString = contents
+        .map((content) => {
             return `
-            <li class="character">
-                <h2>${character.name}</h2>
-                <p>House: ${character.house}</p>
-                <img src="${character.image}"></img>
+            <li class="contentBox">
+                <h2 class="titleLink"><a href=${content.url}>${content["page_title"]}</a></h2>
+                <h5 class="urlLink">${content.url}</h5>
+                <p class="description">${content.text}</p>
             </li>
         `;
         })

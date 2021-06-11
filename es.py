@@ -40,7 +40,7 @@ def uploadDoc(ESList):
             "timestamp": datetime.now(),
             "author": ""
         }
-        res = esConn.index(index="edusite", id=1, body=doc)
+        res = esConn.index(index="edusite", body=doc)
         print(res)
         print('\n')
     except ConnectionError as err:
