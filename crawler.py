@@ -41,10 +41,10 @@ class Crawler:
             htmlFile = htmlFile[:-1]
             # print(htmlFile)
         # Check duplicated pages:
-        if htmlFile in visitedPage:
+        if url in visitedPage:
             print('Duplicated page found! Skipping this round ... ...')
             return True
-        visitedPage.append(htmlFile)
+        visitedPage.append(url)
         htmlFile += '.html'        
         html = self.download_url(url)
 
@@ -75,3 +75,8 @@ class Crawler:
 
 def crawler(url, pages):
     crw = Crawler(url,pages).run()
+    hist = open('history.txt','w')
+    for URLS in visitedPage:
+        hist.write(URLS)
+        hist.write('\n')
+    hist.close()

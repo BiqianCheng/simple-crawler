@@ -29,9 +29,33 @@ def parse(htmlPage):
     Returns:
         string: The text string that is visible by the user 
     """
-    soup = BeautifulSoup(htmlPage, 'html.parser')
+    htmlText = open(htmlPage,'r',encoding='utf-8')
+    soup = BeautifulSoup(htmlText, 'html.parser')
     page_title = soup.find('title')
     texts = soup.findAll(text=True)
+    # Find title
+    titleText = soup.find('title')
+    titleText = titleText.string
+    print(titleText,'\n')
+    # Find text
     visible_texts = filter(tag_visible, texts)
-    print('Parsing done, all text in body tag will be stored in body.txt\n')
-    return u" ".join(t.strip() for t in visible_texts)
+    #print('Parsing done, all text in body tag will be stored in body.txt\n')
+    bodyText = u" ".join(t.strip() for t in visible_texts)
+    print(bodyText,'\n')
+    # Get url
+    URLList = htmlPage.replace('html/','').replace('.html','').replace('_',' ').split()
+    URL = ''
+    hist = open('history.txt','r')
+    history = hist.readlines()
+    for line in history:
+        isThis = False
+        URL = ''
+        for word in URLList:
+            if word not in line:
+                isThis = False
+                break
+            isThis = True
+            URL = line
+        if isThis:
+            break
+    #print(URL)     
