@@ -1,5 +1,6 @@
 https://www1.cs.ucr.edu/
-https://ucsd.edu
+https://uci.edu
+https://twitter.com
 https://www.engr.ucr.edu/covid-19-information-page
 https://www1.cs.ucr.edu/news/cse-professor-received-doctoral-dissertation-faculty-award
 https://www1.cs.ucr.edu/news/cse-professor-papalexakis-received-the-nsf-career-award
@@ -17,4 +18,3 @@ https://campusmap.ucr.edu/?loc=CHUNG
 mailto:contact@cs.ucr.edu
 https://www1.cs.ucr.edu/department-intranet
 https://twitter.com/ucr_cse
-https://www.facebook.com/UCRCompSciEng
