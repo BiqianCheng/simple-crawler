@@ -1,4 +1,4 @@
-# CS172-Project
+# CS172 Team DEAL
 
 ## Team member 1 - Biqian Cheng:
 
