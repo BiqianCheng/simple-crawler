@@ -73,7 +73,7 @@ Languages used: Python, CSS JavaScript, HTML
 
 ## Part 2
 
-- Indexer
+-   Indexer
 
     When we crawl the page, we will get the result from HTML source code. We strip down the invisible element and only store the body text. Then, formatting them into a acceptable format in ElasticSearch. Meanwhile, they are updated into the database.
 
@@ -81,7 +81,7 @@ Languages used: Python, CSS JavaScript, HTML
 
 ## Part 3 - Extension
 
-- Web-Interface
+-   Web-Interface
 
     We decided to build a website that contains a title and a search bar to meet the basic requirements.
 
@@ -94,7 +94,7 @@ Languages used: Python, CSS JavaScript, HTML
 
 # Instruction
 
-## Running Crawler
+## Run Crawler
 
 -   ## Installation
 
@@ -112,12 +112,16 @@ Languages used: Python, CSS JavaScript, HTML
 
     Run the driver app. The driver app provide a CLI that prompt the user to add, extract seeds and call the crawler.
 
+## Run Web app
+
+-   ## Command
+
     ### `./server.sh`
 
-    Run the website on localhost.  
+    Run the website on localhost.
     This script basically `cd` to the src directory and execute `python3 -m http.server`.  
-    If you cannot execute this script in your shell, please give the script the permission to execute by typing  
-     `chmod a+rx server.sh`  
+    If you cannot execute this script in your shell, please give the script the permission to execute by typing
+    `chmod a+rx server.sh`
     This should allow the script to be executed.
 
 -   ## FAQ
@@ -138,4 +142,4 @@ Languages used: Python, CSS JavaScript, HTML
 
         After you run the disable version, it should be able to perform api calls and give you the result.
 
-        ### **Reminder: DO NOT USE the disabled browser for credential purposes as the security feature is totally disabled.**
+    ### **Reminder: DO NOT USE the disabled browser for credential purposes as the security feature is totally disabled.**
